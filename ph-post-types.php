@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:       Post Types and Taxonomies
- * Plugin URI:        http://github.com/philia/ph-post-types/
+ * Plugin URI:        http://github.com/laphilia/ph-post-types/
  * Description:       A simple plugin for creating custom post types and taxonomies.
  * Version:           1.0.0
  * Author:            mitts
@@ -21,15 +21,15 @@ define( 'PHDOMAIN', 'ph-post-types' );
 define( 'PHPATH', plugin_dir_path( __FILE__ ) );
 
 require_once( PHPATH . '/post-types/register.php' );
-add_action( 'init', 'ph_register_business_type' );
+add_action( 'init', 'ph_register_textelement_type' );
 add_action( 'init', 'ph_register_event_type' );
 
 require_once( PHPATH . '/taxonomies/register.php' );
-add_action( 'init', 'ph_register_size_taxonomy' );
-add_action( 'init', 'ph_register_location_taxonomy' );
+add_action( 'init', 'ph_register_element_taxonomy' );
+add_action( 'init', 'ph_register_source_taxonomy' );
 
 function ph_rewrite_flush() {
-    ph_register_business_type();
+    ph_register_textelement_type();
     flush_rewrite_rules();
 }
 register_activation_hook( __FILE__, 'ph_rewrite_flush' );
